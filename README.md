@@ -2,7 +2,7 @@
 
 ## Map Area
 Phoenix, AZ, United States
-- [https://www.openstreetmap.org/export#map=12/33.5184/-112.0623]
+- https://www.openstreetmap.org/export#map=12/33.5184/-112.0623
 This map is of my hometown, so I’m more interested to see what database querying reveals, and I’d like an opportunity to contribute to its improvement on OpenStreetMap.org.
 ## Problems Encountered in the Map
 After initially downloading a small sample size of the Phoenix area and running it against a provisional data.py file, I noticed a couple main problems with the data, which I will discuss in the following order:
