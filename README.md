@@ -40,21 +40,28 @@ With the cleaned csv files imported into a database, I ran a number of queries i
 - Number of unique users
 - Number of nodes and ways
 - Number of chosen type of nodes, like cafes, shops etc.
-###### Size of the file
+### Size of the file
 map.osm ............... 72.7 mb
+
 map.db ................ 41.1 mb
+
 new_nodes ............. 24.4 mb
+
 new_nodes_tags ........ 2.44 mb
+
 new_ways .............. 2.45 mb
+
 new_ways_nodes ........ 8.15 mb
+
 new_ways_tags ......... 7.47 mb
-###### Number of Unique Users
+
+### Number of Unique Users
 ```
 SELECT COUNT(DISTINCT(e.uid)) 
 FROM (SELECT uid FROM Nodes UNION ALL SELECT uid FROM Ways) e;
 ```
 374
-###### Number of Nodes
+### Number of Nodes
 ```
 SELECT COUNT(*) FROM nodes;
 ```
@@ -64,7 +71,7 @@ SELECT COUNT(*) FROM nodes;
 SELECT COUNT(*) FROM ways;
 ```
 42840
-###### Top 10 Amentities
+### Top 10 Amentities
 ```
 SELECT value, COUNT(*) as num
 FROM nodes_tags
@@ -74,16 +81,26 @@ ORDER BY num DESC
 LIMIT 10;
 ```
 place_of_worship 238
+
 bench 227
+
 waste_basket 174
+
 restaurant 153
+
 fast_food 129
+
 school 113
+
 fuel 104
+
 swimming_pool 64
+
 bicycle_rental 50
+
 vending_machine 43
-###### Top 10 Contributing Users
+
+### Top 10 Contributing Users
 ```
 SELECT e.user, COUNT(*) as num
 FROM (SELECT user FROM nodes UNION ALL SELECT user FROM ways) e
@@ -92,16 +109,26 @@ ORDER BY num DESC
 LIMIT 10;
 ```
 Dr Kludge 232965
+
 TheDutchMan13 32230
+
 rayn 15732
+
 dwh1985 7461
+
 namannik 5222
+
 Sundance 3251
+
 Your Village Maps 2597
+
 adenium 2511
+
 ShatteredArm 2475
+
 DesertNavigator 1977
-###### Number of Users Appearing Only Once (Having 1 post)
+
+### Number of Users Appearing Only Once (Having 1 post)
 ```
 SELECT COUNT(*) 
 FROM
@@ -112,16 +139,16 @@ FROM
 ```
 92
 ## Additional Ideas
-###### Contributor statistics and usage suggestion / potential problems with suggestion
+### Contributor statistics and usage suggestion / potential problems with suggestion
 The contributions of users seems incredibly skewed, possibly due to automated versus manual map editing. Here are some user percentage statistics:
 - Top user contribution percentage (“DrKludge”) 77.12%
 - Combined number of users making under 1% contribution of posts 368 (about 98% of all users)
 Given how skewed the user percentage distributions are, a more consistent participation across the board of users would help level set the data. For this particular region, the "DrKludge" user made the most contributions of map data. Obviously, this user does not need any sort of additional motivation - it's likely they fall under the demographic of the user community highlighted on the OpenStreetMap site - of the enthusiast mapper, engineers running the OSM servers, etc. For everyone else, incentives such as a leaderboard amongst their peers could be helpful in sparring competition and lead to the creation of more efficient bots, where more than 2% of the users make contributions of at least 1%.
 A recently popular app – Pokémon Go – has mastered this gamification concept by exploiting one of the most addicting games in game history.  Players are incentivized by leveling up their Pokémon, finding new exotic ones, hatching eggs, and battling at the gym.  I think integration of the OSM database with an app such as this one would help lead to improvisations in the data.  Another idea would be to create a running app that gives users rewards for the more area they cover in their routes.  Perhaps, users can stack up or collect resources as they run, then create / upgrade a central base and battle it out with other users of the app.  An Age of Empires / StarCraft spin to it.  All the while, generating more accurate data for the OpenStreetMap.org.
 While the phone apps would be a nifty approach towards getting people to generate more data for the OSM project, it also runs the risk of inaccurate input.  However, I believe a validation system could be put into place to secure accurate data entry.  Example, someone running with the run app open passes an In n Out Burger.  They input American cuisine for the restaurant category.  It’s validated when another person either likes this entry or puts in an entry of their own that matches the same info.
-###### Additional Data Exploration
+### Additional Data Exploration
 Taking a deeper dive into the top 10 amenities list, here are some of the most popular values for their respective keys:
-###### Most Popular Cuisine
+### Most Popular Cuisine
 ```
 SELECT nodes_tags.value, COUNT(*) as num
 FROM nodes_tags 
@@ -134,7 +161,7 @@ LIMIT 1;
 ```
 mexican 18
 If you've ever been to Arizona, I recommend a diet consisting of tacos and burritos. Yet, this is still a surprise in that there aren't any other cuisines in the dataset. This again ties back to the skewed nature of these OSM datasets. With better data sources this would likely be a different cuisine list in the future as I'm sure there are other types of restaurants in the area.
-###### Most Popular Religion (in this region)
+### Most Popular Religion (in this region)
 ```
 SELECT nodes_tags.value, COUNT(*) as num
 FROM nodes_tags 
