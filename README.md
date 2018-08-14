@@ -160,6 +160,7 @@ ORDER BY num DESC
 LIMIT 1;
 ```
 mexican 18
+
 If you've ever been to Arizona, I recommend a diet consisting of tacos and burritos. Yet, this is still a surprise in that there aren't any other cuisines in the dataset. This again ties back to the skewed nature of these OSM datasets. With better data sources this would likely be a different cuisine list in the future as I'm sure there are other types of restaurants in the area.
 ### Most Popular Religion (in this region)
 ```
